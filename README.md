@@ -12,6 +12,8 @@ tweaks, export. Under 1 MB, nothing to import, nothing to set up.
 
 <p align="center">
   <img src="Assets/screenshot.jpg" alt="lit editing a photo of The Wave, with the adjustment sliders on the right" width="100%">
+  <br>
+  <sub>That's me, at The Wave in Arizona, 2024.</sub>
 </p>
 
 ## What it can do
