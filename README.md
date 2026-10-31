@@ -18,6 +18,19 @@ tweaks, export. Under 1 MB, nothing to import, nothing to set up.
 - **Crop and straighten**, your camera's **lens corrections**, and a **dust speck** remover
 - **JPEG export** with your camera info kept
 
+## Install
+
+### [⬇ Download lit](https://github.com/sandeep-josyula/lit/releases/latest/download/LIT.zip)
+
+Needs a Mac with Apple silicon (M1 or newer) and macOS 14 Sonoma or later.
+
+1. **Unzip** `LIT.zip` and drag **LIT** into **Applications**.
+2. **Open LIT.** The first time, macOS blocks it because lit isn't registered with Apple yet.
+   Go to **System Settings → Privacy & Security**, click **Open Anyway** next to *"LIT" was
+   blocked*, enter your password and click **Open**. You only do this once.
+
+To remove lit, drag it to the Trash. Your photos are never touched.
+
 <p align="center">
   <img src="Assets/screenshot.jpg" alt="lit editing a photo of The Wave, with the adjustment sliders on the right" width="100%">
   <br>
@@ -33,19 +46,6 @@ your camera captured; it never changes what was there.
 
 lit collects **zero** data. No analytics, no statistics, no crash reports, no accounts. It has
 no networking code at all, so it never connects to the internet. Your photos stay on your Mac.
-
-## Install
-
-### [⬇ Download lit](https://github.com/sandeep-josyula/lit/releases/latest/download/LIT.zip)
-
-Needs a Mac with Apple silicon (M1 or newer) and macOS 14 Sonoma or later.
-
-1. **Unzip** `LIT.zip` and drag **LIT** into **Applications**.
-2. **Open LIT.** The first time, macOS blocks it because lit isn't registered with Apple yet.
-   Go to **System Settings → Privacy & Security**, click **Open Anyway** next to *"LIT" was
-   blocked*, enter your password and click **Open**. You only do this once.
-
-To remove lit, drag it to the Trash. Your photos are never touched.
 
 ## Handy keys
 
