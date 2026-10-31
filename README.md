@@ -40,7 +40,7 @@ To remove lit, drag it to the Trash. Your photos are never touched.
 <p align="center">
   <img src="Assets/panorama-builder.jpg" alt="lit's Build Panorama window: three frames, layout and projection choices, and a live preview of the stitched result" width="100%">
   <br>
-  <sub>Building a panorama: set the order, layout and projection, and see the result before you merge.</sub>
+  <sub>Somewhere just off the road between Ouray and Telluride, Colorado, 2014.</sub>
 </p>
 
 ## What it won't do
