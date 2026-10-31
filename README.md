@@ -10,12 +10,6 @@
 lit is a tiny, fast photo editor for landscape photographers. Open a RAW or JPEG, make a few
 tweaks, export. Under 1 MB, nothing to import, nothing to set up.
 
-<p align="center">
-  <img src="Assets/screenshot.jpg" alt="lit editing a photo of The Wave, with the adjustment sliders on the right" width="100%">
-  <br>
-  <sub>That's me, at The Wave in Arizona, 2024.</sub>
-</p>
-
 ## What it can do
 
 - **Basic sliders** for light and colour: exposure, contrast, highlights, shadows, white balance and more
@@ -23,6 +17,12 @@ tweaks, export. Under 1 MB, nothing to import, nothing to set up.
 - **Panoramas** stitched from 2–9 photos, with a live preview
 - **Crop and straighten**, your camera's **lens corrections**, and a **dust speck** remover
 - **JPEG export** with your camera info kept
+
+<p align="center">
+  <img src="Assets/screenshot.jpg" alt="lit editing a photo of The Wave, with the adjustment sliders on the right" width="100%">
+  <br>
+  <sub>That's me, at The Wave in Arizona, 2024.</sub>
+</p>
 
 ## What it won't do
 
