@@ -79,8 +79,16 @@ Thanks to the [darktable](https://www.darktable.org) project, whose open documen
 code showed how Sony stores lens corrections in ARW files. lit's implementation is its own.
 
 ```sh
-scripts/build-app.sh --install                                                 # build and install
-scripts/build-app.sh && ditto -c -k --keepParent build/LIT.app build/LIT.zip   # make LIT.zip
+scripts/build-app.sh --install    # build and install locally
 ```
+
+Releases use [semantic versioning](https://semver.org). Push a tag and GitHub Actions builds
+LIT.app, zips it and publishes the release that the download link points to:
+
+```sh
+git tag v1.1.0 && git push origin v1.1.0
+```
+
+Pull requests are built automatically too.
 
 </details>

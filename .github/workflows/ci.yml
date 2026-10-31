@@ -1,0 +1,22 @@
+# Builds lit on every pull request, so a broken build never reaches main.
+name: CI
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # tags and history, for the version and build number
+
+      - name: Toolchain
+        run: swift --version
+
+      - name: Build everything
+        run: swift build -c release
+
+      - name: Build LIT.app
+        run: scripts/build-app.sh

@@ -1,0 +1,50 @@
+# Publishes a release when a semver tag is pushed:
+#   git tag v0.1.0 && git push origin v0.1.0
+# Builds LIT.app with that version, zips it and attaches LIT.zip to a GitHub release, which is
+# what the README's download link (releases/latest/download/LIT.zip) points to.
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write   # to create the release
+
+jobs:
+  release:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Read version from tag
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "::error::Tag $GITHUB_REF_NAME is not semver (expected vMAJOR.MINOR.PATCH)"
+            exit 1
+          fi
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+
+      - name: Toolchain
+        run: swift --version
+
+      - name: Build LIT.app
+        run: LIT_VERSION="$VERSION" scripts/build-app.sh
+
+      - name: Zip
+        run: ditto -c -k --keepParent build/LIT.app build/LIT.zip
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PRERELEASE=""
+          [[ "$VERSION" == *-* ]] && PRERELEASE="--prerelease"
+          gh release create "$GITHUB_REF_NAME" build/LIT.zip \
+            --title "lit $VERSION" \
+            --notes "Download **LIT.zip**, unzip it and drag LIT to Applications. The first time, allow it in System Settings → Privacy & Security → Open Anyway (see the README)." \
+            --generate-notes $PRERELEASE
