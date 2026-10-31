@@ -780,6 +780,11 @@ final class EditorModel {
             }
             return out
         }
+        func squaredDifference(_ a: [Double], _ b: [Double]) -> Double {
+            var sum = 0.0
+            for (x, y) in zip(a, b) { sum += (x - y) * (x - y) }
+            return sum
+        }
         guard let target = ring(p, 1.3), let targetOuter = ring(p, 1.6) else { return fallback }
         var best = fallback, bestScore = Double.infinity
         for dist in [2.4, 3.2, 4.2] {
@@ -791,10 +796,9 @@ final class EditorModel {
                       let r1 = ring(c, 1.3), let r2 = ring(c, 1.6), let inner = ring(c, 0.5) else { continue }
                 // Same surroundings, and a source centre that looks like its own surroundings
                 // (so we don't copy another speck or an edge), with a slight preference for near.
-                var score = zip(target, r1).map { ($0 - $1) * ($0 - $1) }.reduce(0, +)
-                score += zip(targetOuter, r2).map { ($0 - $1) * ($0 - $1) }.reduce(0, +)
-                let ringMean = (r1 + r2).reduce(0, +) / 32
-                score += inner.map { ($0 - ringMean) * ($0 - ringMean) }.reduce(0, +) * 0.5
+                let ringMean: Double = (r1 + r2).reduce(0, +) / 32
+                var score: Double = squaredDifference(target, r1) + squaredDifference(targetOuter, r2)
+                score += squaredDifference(inner, [Double](repeating: ringMean, count: inner.count)) * 0.5
                 score *= 1 + 0.08 * dist
                 if score < bestScore { bestScore = score; best = c }
             }

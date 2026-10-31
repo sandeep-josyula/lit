@@ -94,10 +94,15 @@ struct CropOverlay: View {
 
     /// The photo's outline after straightening, in view coordinates.
     private var rotatedCorners: [CGPoint] {
-        let a = angle * .pi / 180, ca = CGFloat(cos(a)), sa = CGFloat(sin(a))
-        return [CGPoint(x: -rect.width / 2, y: -rect.height / 2), CGPoint(x: rect.width / 2, y: -rect.height / 2),
-                CGPoint(x: rect.width / 2, y: rect.height / 2), CGPoint(x: -rect.width / 2, y: rect.height / 2)].map {
-            CGPoint(x: rect.midX + $0.x * ca - $0.y * sa, y: rect.midY + $0.x * sa + $0.y * ca)
+        let a = angle * .pi / 180
+        let ca = CGFloat(cos(a)), sa = CGFloat(sin(a))
+        let hw = rect.width / 2, hh = rect.height / 2
+        let corners: [CGPoint] = [CGPoint(x: -hw, y: -hh), CGPoint(x: hw, y: -hh),
+                                  CGPoint(x: hw, y: hh), CGPoint(x: -hw, y: hh)]
+        return corners.map { p -> CGPoint in
+            let x: CGFloat = rect.midX + p.x * ca - p.y * sa
+            let y: CGFloat = rect.midY + p.x * sa + p.y * ca
+            return CGPoint(x: x, y: y)
         }
     }
 
