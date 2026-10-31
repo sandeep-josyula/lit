@@ -2,7 +2,8 @@
 #   git tag v0.1.0 && git push origin v0.1.0
 # Builds LIT.app with that version, zips it and attaches LIT.zip to a GitHub release, which is
 # what the README's download link (releases/latest/download/LIT.zip) points to.
-name: Release
+name: Build LIT and Release
+run-name: Build LIT and Release ${{ github.ref_name }}
 
 on:
   push:
